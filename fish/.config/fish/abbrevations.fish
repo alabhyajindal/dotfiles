@@ -1,8 +1,7 @@
 # dotfiles
 #abbr fc nvim ~/dotfiles/fish/config.fish
-#abbr ac nvim ~/dotfiles/fish/abbrevations.fish
-#abbr vc nvim ~/dotfiles/nvim/init.lua
-#abbr hf nvim ~/.local/share/fish/fish_history
+abbr ac nvim ~/.dotfiles/fish/.config/fish/abbrevations.fish
+abbr vc nvim ~/.dotfiles/nvim/.config/nvim/init.lua
 
 # git
 abbr g git
@@ -16,7 +15,6 @@ abbr gr git restore
 abbr gu "git add . && git commit -m 'Update' && git push"
 
 # development
-abbr v nvim
 abbr vi nvim
 abbr irb irb --simple-prompt
 abbr py python
