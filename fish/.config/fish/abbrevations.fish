@@ -1,13 +1,3 @@
-# navigation
-abbr desk cd ~/Desktop
-abbr down cd ~/Downloads
-abbr docs cd ~/Documents
-abbr units cd ~/Documents/units
-
-# system
-abbr x exit
-abbr c clear
-
 # dotfiles
 #abbr fc nvim ~/dotfiles/fish/config.fish
 #abbr ac nvim ~/dotfiles/fish/abbrevations.fish
@@ -23,6 +13,7 @@ abbr gp git push
 abbr gl git log
 abbr gd git diff
 abbr gr git restore
+abbr gu "git add . && git commit -m 'Update' && git push"
 
 # development
 abbr v nvim
