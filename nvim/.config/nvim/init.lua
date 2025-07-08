@@ -6,6 +6,12 @@ vim.call('plug#end')
 
 require('Comment').setup()
 
+-- Ctrl+Backspace: Delete previous word
+vim.keymap.set('i', '<C-H>', '<C-w>')
+
+-- Ctrl+Delete: Delete next word  
+vim.keymap.set('i', '<C-Del>', '<C-o>dw')
+
 vim.opt.termguicolors = true
 
 -- Map Ctrl+/ for both single line and visual selection
