@@ -19,6 +19,7 @@ abbr vi nvim
 abbr irb irb --simple-prompt
 abbr py python
 abbr sml rlwrap sml
+abbr w wasmtime
 
 # personal
 abbr t today
