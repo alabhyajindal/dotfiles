@@ -23,7 +23,7 @@
         // "cpu",
         // "memory",
         // "temperature",
-        // "backlight",
+        "backlight",
         // "sway/language",
         "battery",
         "clock",
