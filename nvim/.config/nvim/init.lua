@@ -2,9 +2,14 @@ local Plug = vim.fn['plug#']
 
 vim.call('plug#begin')
 Plug('numToStr/Comment.nvim')
+Plug('nvim-lua/plenary.nvim')
+Plug('nvim-telescope/telescope.nvim')
 vim.call('plug#end')
 
 require('Comment').setup()
+
+-- Ctrl+p to find files
+vim.keymap.set('n', '<C-p>', '<cmd>Telescope find_files<cr>', { desc = 'Find files' })
 
 -- Ctrl+Backspace: Delete previous word
 vim.keymap.set('i', '<C-H>', '<C-w>')
