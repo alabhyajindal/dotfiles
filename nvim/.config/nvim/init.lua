@@ -8,6 +8,9 @@ vim.call('plug#end')
 
 require('Comment').setup()
 
+-- Don't comment the next line automatically
+ vim.cmd([[autocmd FileType * set formatoptions-=ro]])
+
 -- Ctrl+p to find files
 vim.keymap.set('n', '<C-p>', '<cmd>Telescope find_files<cr>', { desc = 'Find files' })
 
@@ -22,6 +25,7 @@ vim.opt.termguicolors = true
 -- Map Ctrl+/ for both single line and visual selection
 vim.keymap.set('n', '<C-/>', 'gcc', { remap = true })
 vim.keymap.set('v', '<C-/>', 'gc', { remap = true })
+vim.keymap.set('i', '<C-/>', '<Esc>gcca', { remap = true })
 
 -- Make tab 4 spaces
 vim.opt.tabstop = 4
