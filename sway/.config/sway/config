@@ -31,6 +31,9 @@ default_border none
 set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
 exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
 
+# do not change focused window when hovering the mouse on another
+focus_follows_mouse no
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/) [changed, removed default wallpaper]
