@@ -4,6 +4,7 @@ vim.call('plug#begin')
 Plug('numToStr/Comment.nvim')
 Plug('nvim-lua/plenary.nvim')
 Plug('nvim-telescope/telescope.nvim')
+Plug('jiangmiao/auto-pairs')
 vim.call('plug#end')
 
 require('Comment').setup()
