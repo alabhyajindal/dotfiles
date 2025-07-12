@@ -67,6 +67,7 @@ vim.api.nvim_create_user_command(
       haskell = 'runghc',
       sml = 'sml',
       c = 'gcc',
+      rust = 'cargo'
     }
 
     local interpreter = interpreters[filetype]
@@ -85,6 +86,11 @@ vim.api.nvim_create_user_command(
     -- Compile and run if using C
     if interpreter == 'gcc' then
         vim.cmd('!gcc ' .. filename .. ' -o a && ./a')
+        return
+    end
+
+    if interpreter == 'cargo' then
+        vim.cmd('!cargo run')
         return
     end
 
