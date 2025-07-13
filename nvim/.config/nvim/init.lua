@@ -5,9 +5,21 @@ Plug('numToStr/Comment.nvim')
 Plug('nvim-lua/plenary.nvim')
 Plug('nvim-telescope/telescope.nvim')
 Plug('jiangmiao/auto-pairs')
+Plug('nvim-lualine/lualine.nvim')
 vim.call('plug#end')
 
+
 require('Comment').setup()
+require('lualine').setup({
+    options = {
+        component_separators = {left = '', right = ''},
+        section_separators = {left = '', right = ''}
+    },
+    sections = {
+        lualine_b = {},
+        lualine_x = {}
+    }
+})
 
 -- Highlight the current line number
 vim.opt.cursorline = true
