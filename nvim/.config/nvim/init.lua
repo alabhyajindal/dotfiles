@@ -9,6 +9,10 @@ vim.call('plug#end')
 
 require('Comment').setup()
 
+-- Highlight the current line number
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = 'number'
+
 -- Don't comment the next line automatically
  vim.cmd([[autocmd FileType * set formatoptions-=ro]])
 
