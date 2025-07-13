@@ -30,6 +30,8 @@ vim.opt.cursorlineopt = 'number'
 
 -- Ctrl+p to find files
 vim.keymap.set('n', '<C-p>', '<cmd>Telescope find_files<cr>', { desc = 'Find files' })
+-- Ctrl+Shift+f to find in all files
+vim.keymap.set('n', '<C-S-f>', '<cmd>Telescope live_grep<cr>', { desc = 'Live grep' })
 
 -- Ctrl+Backspace: Delete previous word
 vim.keymap.set('i', '<C-H>', '<C-w>')
