@@ -1,3 +1,6 @@
+-- Leader key
+vim.g.mapleader = " "
+
 local Plug = vim.fn['plug#']
 
 vim.call('plug#begin')
@@ -8,6 +11,16 @@ Plug('jiangmiao/auto-pairs')
 Plug('nvim-lualine/lualine.nvim')
 vim.call('plug#end')
 
+require('telescope').setup({
+  defaults = {
+    mappings = {
+      i = {
+        -- Close file picker
+        ["<C-[>"] = require('telescope.actions').close,
+      },
+    }
+  }
+})
 
 require('Comment').setup()
 require('lualine').setup({
@@ -20,6 +33,7 @@ require('lualine').setup({
         lualine_x = {}
     }
 })
+vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<cr>', { desc = 'Find files' })
 
 -- Highlight the current line number
 vim.opt.cursorline = true
@@ -27,11 +41,6 @@ vim.opt.cursorlineopt = 'number'
 
 -- Don't comment the next line automatically
  vim.cmd([[autocmd FileType * set formatoptions-=ro]])
-
--- Ctrl+p to find files
-vim.keymap.set('n', '<C-p>', '<cmd>Telescope find_files<cr>', { desc = 'Find files' })
--- Ctrl+Shift+f to find in all files
-vim.keymap.set('n', '<C-S-f>', '<cmd>Telescope live_grep<cr>', { desc = 'Live grep' })
 
 -- Ctrl+Backspace: Delete previous word
 vim.keymap.set('i', '<C-H>', '<C-w>')
@@ -69,9 +78,6 @@ vim.opt.clipboard = 'unnamedplus'
 
 -- Hiding cursor position indicator
 vim.opt.ruler= false
-
--- Leader key
-vim.g.mapleader = " "
 
 -- Run the current file
 vim.api.nvim_create_user_command(
