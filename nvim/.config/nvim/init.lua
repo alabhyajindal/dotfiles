@@ -1,6 +1,13 @@
 -- Leader key
 vim.g.mapleader = " "
 
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "markdown",
+    callback = function()
+        vim.opt_local.spell = true
+    end,
+})
+
 local Plug = vim.fn['plug#']
 
 vim.call('plug#begin')
