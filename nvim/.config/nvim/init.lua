@@ -16,7 +16,10 @@ Plug('nvim-lua/plenary.nvim')
 Plug('nvim-telescope/telescope.nvim')
 Plug('jiangmiao/auto-pairs')
 Plug('nvim-lualine/lualine.nvim')
+Plug('folke/tokyonight.nvim')
 vim.call('plug#end')
+
+vim.cmd[[colorscheme tokyonight-moon]]
 
 require('telescope').setup({
   defaults = {

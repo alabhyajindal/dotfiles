@@ -11,6 +11,7 @@ function scheme_for_appearance(appearance)
   end
 end
 
+-- Removing this doesn't update color schemes when the system theme is updated
 wezterm.on('window-config-reloaded', function(window, pane)
   local overrides = window:get_config_overrides() or {}
   local appearance = window:get_appearance()
