@@ -59,6 +59,10 @@ require('lualine').setup({
         lualine_x = {}
     }
 })
+
+-- Hide the mode since it's shown by lualine
+vim.opt.showmode = false
+
 vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<cr>', { desc = 'Find files' })
 
 -- Highlight the current line number
