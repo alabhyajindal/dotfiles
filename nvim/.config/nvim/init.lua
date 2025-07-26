@@ -19,7 +19,23 @@ Plug('nvim-lualine/lualine.nvim')
 Plug('folke/tokyonight.nvim')
 vim.call('plug#end')
 
-vim.cmd[[colorscheme tokyonight-moon]]
+-- Function to set colorscheme based on background
+local function set_colorscheme_by_background()
+  if vim.o.background == 'dark' then
+    vim.cmd[[colorscheme tokyonight]]
+  else
+    vim.cmd[[colorscheme tokyonight-day]]
+  end
+end
+
+-- Set initial colorscheme
+set_colorscheme_by_background()
+
+-- Auto-update when background changes
+vim.api.nvim_create_autocmd("OptionSet", {
+  pattern = "background",
+  callback = set_colorscheme_by_background,
+})
 
 require('telescope').setup({
   defaults = {
