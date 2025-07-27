@@ -38,7 +38,7 @@ focus_follows_mouse no
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/) [changed, removed default wallpaper]
 # output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg ~/Pictures/black.png fill
+output * bg ~/Pictures/Wallpapers/m.jpg fill
 #
 # Example configuration:
 #

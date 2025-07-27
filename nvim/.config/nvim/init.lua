@@ -1,12 +1,31 @@
 -- Leader key
 vim.g.mapleader = " "
 
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "markdown",
-    callback = function()
-        vim.opt_local.spell = true
-    end,
-})
+-- Trigger completion if avaiable, else indent
+local function insert_tab_wrapper()
+    local col = vim.fn.col('.') - 1
+    if col == 0 then
+        return '<Tab>'
+    end
+    
+    local line = vim.fn.getline('.')
+    local char = line:sub(col, col)
+    
+    if char:match('[%w_]') then
+        -- There's an identifier before the cursor, so complete the identifier.
+        return '<C-p>'
+    else
+        return '<Tab>'
+    end
+end
+
+-- Set up the key mappings
+vim.keymap.set('i', '<Tab>', insert_tab_wrapper, { expr = true })
+vim.keymap.set('i', '<S-Tab>', '<C-n>')
+
+vim.keymap.set({'n', 'i'}, '<F6>', function()
+    vim.opt_local.spell = not vim.opt_local.spell:get()
+end, { desc = "Toggle spell checking" })
 
 local Plug = vim.fn['plug#']
 
