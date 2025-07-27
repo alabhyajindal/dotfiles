@@ -1,49 +1,11 @@
+------------------------------------------------------------------------------
+-- General configuation
+------------------------------------------------------------------------------
 -- Leader key
 vim.g.mapleader = " "
 
-
-vim.keymap.set({'n', 'i'}, '<F6>', function()
-    vim.opt_local.spell = not vim.opt_local.spell:get()
-end, { desc = "Toggle spell checking" })
-
-local Plug = vim.fn['plug#']
-
-vim.call('plug#begin')
-Plug('numToStr/Comment.nvim')
-Plug('nvim-lua/plenary.nvim')
-Plug('nvim-telescope/telescope.nvim')
-Plug('jiangmiao/auto-pairs')
-Plug('nvim-lualine/lualine.nvim')
-Plug('folke/tokyonight.nvim')
-vim.call('plug#end')
-
-require('telescope').setup({
-  defaults = {
-    mappings = {
-      i = {
-        -- Close file picker
-        ["<C-[>"] = require('telescope.actions').close,
-      },
-    }
-  }
-})
-
-require('Comment').setup()
-require('lualine').setup({
-    options = {
-        component_separators = {left = '', right = ''},
-        section_separators = {left = '', right = ''}
-    },
-    sections = {
-        lualine_b = {},
-        lualine_x = {}
-    }
-})
-
 -- Hide the mode since it's shown by lualine
 vim.opt.showmode = false
-
-vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<cr>', { desc = 'Find files' })
 
 -- Highlight the current line number
 vim.opt.cursorline = true
@@ -84,7 +46,53 @@ vim.opt.clipboard = 'unnamedplus'
 vim.opt.ruler= false
 
 ------------------------------------------------------------------------------
--- Function to set colorscheme based on background
+-- Toggle spell checker with F6
+------------------------------------------------------------------------------
+vim.keymap.set({'n', 'i'}, '<F6>', function()
+    vim.opt_local.spell = not vim.opt_local.spell:get()
+end, { desc = "Toggle spell checking" })
+
+------------------------------------------------------------------------------
+-- Load and configure plugins
+------------------------------------------------------------------------------
+local Plug = vim.fn['plug#']
+
+vim.call('plug#begin')
+Plug('numToStr/Comment.nvim')
+Plug('nvim-lua/plenary.nvim')
+Plug('nvim-telescope/telescope.nvim')
+Plug('jiangmiao/auto-pairs')
+Plug('nvim-lualine/lualine.nvim')
+Plug('folke/tokyonight.nvim')
+vim.call('plug#end')
+
+require('telescope').setup({
+  defaults = {
+    mappings = {
+      i = {
+        -- Close file picker
+        ["<C-[>"] = require('telescope.actions').close,
+      },
+    }
+  }
+})
+
+vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<cr>', { desc = 'Find files' })
+
+require('Comment').setup()
+require('lualine').setup({
+    options = {
+        component_separators = {left = '', right = ''},
+        section_separators = {left = '', right = ''}
+    },
+    sections = {
+        lualine_b = {},
+        lualine_x = {}
+    }
+})
+
+------------------------------------------------------------------------------
+-- Change theme based on terminal's background
 ------------------------------------------------------------------------------
 local function set_colorscheme_by_background()
   if vim.o.background == 'dark' then
