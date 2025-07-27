@@ -77,7 +77,7 @@ require('telescope').setup({
   }
 })
 
-vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<cr>', { desc = 'Find files' })
+vim.keymap.set('n', '<C-p>', '<cmd>Telescope find_files<cr>', { desc = 'Fuzzy find' })
 
 require('Comment').setup()
 require('lualine').setup({
