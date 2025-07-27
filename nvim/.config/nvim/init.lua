@@ -1,27 +1,6 @@
 -- Leader key
 vim.g.mapleader = " "
 
--- Trigger completion if avaiable, else indent
-local function insert_tab_wrapper()
-    local col = vim.fn.col('.') - 1
-    if col == 0 then
-        return '<Tab>'
-    end
-    
-    local line = vim.fn.getline('.')
-    local char = line:sub(col, col)
-    
-    if char:match('[%w_]') then
-        -- There's an identifier before the cursor, so complete the identifier.
-        return '<C-p>'
-    else
-        return '<Tab>'
-    end
-end
-
--- Set up the key mappings
-vim.keymap.set('i', '<Tab>', insert_tab_wrapper, { expr = true })
-vim.keymap.set('i', '<S-Tab>', '<C-n>')
 
 vim.keymap.set({'n', 'i'}, '<F6>', function()
     vim.opt_local.spell = not vim.opt_local.spell:get()
@@ -37,24 +16,6 @@ Plug('jiangmiao/auto-pairs')
 Plug('nvim-lualine/lualine.nvim')
 Plug('folke/tokyonight.nvim')
 vim.call('plug#end')
-
--- Function to set colorscheme based on background
-local function set_colorscheme_by_background()
-  if vim.o.background == 'dark' then
-    vim.cmd[[colorscheme tokyonight]]
-  else
-    vim.cmd[[colorscheme tokyonight-day]]
-  end
-end
-
--- Set initial colorscheme
-set_colorscheme_by_background()
-
--- Auto-update when background changes
-vim.api.nvim_create_autocmd("OptionSet", {
-  pattern = "background",
-  callback = set_colorscheme_by_background,
-})
 
 require('telescope').setup({
   defaults = {
@@ -122,7 +83,29 @@ vim.opt.clipboard = 'unnamedplus'
 -- Hiding cursor position indicator
 vim.opt.ruler= false
 
--- Run the current file
+------------------------------------------------------------------------------
+-- Function to set colorscheme based on background
+------------------------------------------------------------------------------
+local function set_colorscheme_by_background()
+  if vim.o.background == 'dark' then
+    vim.cmd[[colorscheme tokyonight]]
+  else
+    vim.cmd[[colorscheme tokyonight-day]]
+  end
+end
+
+-- Set initial colorscheme
+set_colorscheme_by_background()
+
+-- Auto-update when background changes
+vim.api.nvim_create_autocmd("OptionSet", {
+  pattern = "background",
+  callback = set_colorscheme_by_background,
+})
+
+------------------------------------------------------------------------------
+-- Run the current file with leader + r
+------------------------------------------------------------------------------
 vim.api.nvim_create_user_command(
   'Run',
   function()
@@ -175,6 +158,27 @@ vim.api.nvim_create_user_command(
 -- Shortcut to trigger file run
 vim.api.nvim_set_keymap('n', '<Leader>r', ':Run<CR>', { silent = true })
 
--- Shortcut to save and quit
-vim.api.nvim_set_keymap('n', '<Leader>q', ':wqa<CR>', { noremap = true, silent = true })
+------------------------------------------------------------------------------
+-- Trigger completion if avaiable, else indent
+------------------------------------------------------------------------------
+local function insert_tab_wrapper()
+    local col = vim.fn.col('.') - 1
+    if col == 0 then
+        return '<Tab>'
+    end
+    
+    local line = vim.fn.getline('.')
+    local char = line:sub(col, col)
+    
+    if char:match('[%w_]') then
+        -- There's an identifier before the cursor, so complete the identifier.
+        return '<C-p>'
+    else
+        return '<Tab>'
+    end
+end
+
+-- Set up the key mappings
+vim.keymap.set('i', '<Tab>', insert_tab_wrapper, { expr = true })
+vim.keymap.set('i', '<S-Tab>', '<C-n>')
 
