@@ -22,7 +22,6 @@ wezterm.on('window-config-reloaded', function(window, pane)
   end
 end)
 
-
 -- This will hold the configuration
 local config = wezterm.config_builder()
 
@@ -30,8 +29,10 @@ local config = wezterm.config_builder()
 config.font_size = 14
 config.font = wezterm.font 'Iosevka'
 config.hide_tab_bar_if_only_one_tab = true
-
+-- Disable ligatures
 config.harfbuzz_features = { 'calt = 0' }
+
+
 
 -- config.window_padding = {
     -- bottom = "0.1cell",

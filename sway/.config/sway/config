@@ -21,7 +21,7 @@ set $menu wmenu-run
 set $browser firefox
 
 # Reduce blue light
-exec gammastep -l 51.38:-2.37
+# exec gammastep
 
 # Hide border when only window on the workspace
 hide_edge_borders --i3 smart
