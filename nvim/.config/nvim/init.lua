@@ -45,6 +45,9 @@ vim.opt.clipboard = 'unnamedplus'
 -- Hiding cursor position indicator
 vim.opt.ruler= false
 
+-- Use British English
+vim.opt.spelllang = {'en_gb'}
+
 ------------------------------------------------------------------------------
 -- Toggle spell checker with F6
 ------------------------------------------------------------------------------
