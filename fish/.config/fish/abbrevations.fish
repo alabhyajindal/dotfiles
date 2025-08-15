@@ -1,5 +1,5 @@
 # dotfiles
-#abbr fc nvim ~/dotfiles/fish/config.fish
+abbr fc cd ~/.dotfiles/fish/.config/fish
 abbr ac nvim ~/.dotfiles/fish/.config/fish/abbrevations.fish
 abbr vc nvim ~/.dotfiles/nvim/.config/nvim/init.lua
 
