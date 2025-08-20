@@ -193,3 +193,5 @@ end
 vim.keymap.set('i', '<Tab>', insert_tab_wrapper, { expr = true })
 vim.keymap.set('i', '<S-Tab>', '<C-n>')
 
+-- Wrap entire file
+vim.keymap.set('n', '<C-m>', ':%!fmt -w 72<CR>', { silent = true })
