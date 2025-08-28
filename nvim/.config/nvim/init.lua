@@ -195,3 +195,14 @@ vim.keymap.set('i', '<S-Tab>', '<C-n>')
 
 -- Wrap entire file
 vim.keymap.set('n', '<C-m>', ':%!fmt -w 72<CR>', { silent = true })
+
+------------------------------------------------------------------------------
+-- Autosave file
+------------------------------------------------------------------------------
+vim.api.nvim_create_autocmd("FocusLost", {
+	callback = function()
+		if vim.bo.modified then
+			vim.cmd("silent w")
+		end
+	end,
+})
