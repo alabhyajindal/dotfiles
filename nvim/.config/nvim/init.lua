@@ -201,7 +201,7 @@ vim.keymap.set('n', '<C-m>', ':%!fmt -w 72<CR>', { silent = true })
 ------------------------------------------------------------------------------
 vim.api.nvim_create_autocmd("FocusLost", {
 	callback = function()
-		if vim.bo.modified then
+		if vim.bo.modified and vim.fn.expand('%') ~= '' then
 			vim.cmd("silent w")
 		end
 	end,
