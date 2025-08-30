@@ -56,7 +56,7 @@ vim.keymap.set({'n', 'i'}, '<F6>', function()
 end, { desc = "Toggle spell checking" })
 
 ------------------------------------------------------------------------------
--- Load and configure plugins
+-- Load plugins
 ------------------------------------------------------------------------------
 local Plug = vim.fn['plug#']
 
@@ -67,7 +67,28 @@ Plug('nvim-telescope/telescope.nvim')
 Plug('jiangmiao/auto-pairs')
 Plug('nvim-lualine/lualine.nvim')
 Plug('folke/tokyonight.nvim')
+Plug('catppuccin/nvim', { as = 'catppuccin' })
+Plug('rose-pine/neovim')
 vim.call('plug#end')
+
+------------------------------------------------------------------------------
+-- Configure plugins
+------------------------------------------------------------------------------
+require("rose-pine").setup({
+    variant = "auto",
+    dark_variant = "moon",
+    styles = {
+        italic = false
+    }
+})
+
+require("catppuccin").setup({
+    flavour = "auto",
+    background = {
+        light = "latte",
+        dark = "macchiato"
+    }
+})
 
 require('telescope').setup({
   defaults = {
@@ -94,25 +115,29 @@ require('lualine').setup({
     }
 })
 
+-- Set colorscheme
+vim.cmd.colorscheme "rose-pine"
+
 ------------------------------------------------------------------------------
 -- Change theme based on terminal's background
 ------------------------------------------------------------------------------
-local function set_colorscheme_by_background()
-  if vim.o.background == 'dark' then
-    vim.cmd[[colorscheme tokyonight]]
-  else
-    vim.cmd[[colorscheme tokyonight-day]]
-  end
-end
+-- commented out since the current theme handles this internally
+-- local function set_colorscheme_by_background()
+--   if vim.o.background == 'dark' then
+--     vim.cmd[[colorscheme tokyonight]]
+--   else
+--     vim.cmd[[colorscheme tokyonight-day]]
+--   end
+-- end
 
 -- Set initial colorscheme
-set_colorscheme_by_background()
+-- set_colorscheme_by_background()
 
 -- Auto-update when background changes
-vim.api.nvim_create_autocmd("OptionSet", {
-  pattern = "background",
-  callback = set_colorscheme_by_background,
-})
+-- vim.api.nvim_create_autocmd("OptionSet", {
+--   pattern = "background",
+--   callback = set_colorscheme_by_background,
+-- })
 
 ------------------------------------------------------------------------------
 -- Run the current file with leader + r

@@ -27,7 +27,7 @@ local config = wezterm.config_builder()
 
 -- Config choices
 config.font_size = 14
-config.font = wezterm.font 'Iosevka'
+config.font = wezterm.font 'Iosevka Term'
 config.hide_tab_bar_if_only_one_tab = true
 -- Disable ligatures
 config.harfbuzz_features = { 'calt = 0' }
